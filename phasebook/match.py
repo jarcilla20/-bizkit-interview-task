@@ -19,9 +19,17 @@ def match(match_id):
     return {"message": msg, "elapsedTime": end - start}, 200
 
 
-def is_match(fave_numbers_1, fave_numbers_2):
-    for number in fave_numbers_2:
-        if number not in fave_numbers_1:
-            return False
+# def is_match(fave_numbers_1, fave_numbers_2):
+#     for number in fave_numbers_2:
+#         if number not in fave_numbers_1:
+#             return False
 
-    return True
+#     return True
+
+def is_match(fave_numbers_1, fave_numbers_2):
+    # Convert the lists to sets for faster membership checks
+    set_fave_numbers_1 = set(fave_numbers_1)
+    set_fave_numbers_2 = set(fave_numbers_2)
+
+    # Check if all numbers in fave_numbers_2 are in fave_numbers_1
+    return set_fave_numbers_2.issubset(set_fave_numbers_1)
